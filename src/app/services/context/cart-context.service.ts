@@ -11,10 +11,10 @@ export class CartContextService {
 
   // define state
   // cart
-  private _cartStore = new BehaviorSubject<CartItemModel[]>([]);
-  public cart$ = this._cartStore.asObservable();
+  private _cartStore$ = new BehaviorSubject<CartItemModel[]>([]);
+  public cart$ = this._cartStore$.asObservable();
 
-  // cart total
+  // todo: cart total
   cartTotal$ = of(100);
 
   // new
@@ -26,7 +26,7 @@ export class CartContextService {
   addToCart(product: ProductModel, qty: number) {
 
     // get the list
-    var items = this._cartStore.value;
+    var items = this._cartStore$.value;
 
     // check if the item exists
     var existingItem = this.findCartItemByProductId(product.id ?? "");
@@ -43,14 +43,14 @@ export class CartContextService {
     }
 
     // send
-    this._cartStore.next(items);
+    this._cartStore$.next(items);
   }
 
   // remove from cart
   removeFromCart(productId: string) {
 
     // get the list
-    var items = this._cartStore.value;
+    var items = this._cartStore$.value;
 
     // find in the list, remove if found
     var existingItemIndex = items.findIndex(x => x.product?.id === productId);
@@ -58,7 +58,7 @@ export class CartContextService {
       items.splice(existingItemIndex, 1);
 
       // send
-      this._cartStore.next(items);
+      this._cartStore$.next(items);
     }
   }
 
@@ -79,8 +79,8 @@ export class CartContextService {
     cartItem.qty += qty;
 
     // get the list to push
-    var items = this._cartStore.value;
-    this._cartStore.next(items);
+    var items = this._cartStore$.value;
+    this._cartStore$.next(items);
   }
 
 
@@ -88,7 +88,7 @@ export class CartContextService {
   findCartItemByProductId(productId: string): CartItemModel | undefined {
 
     // get the items
-    var items = this._cartStore.value;
+    var items = this._cartStore$.value;
 
     // try to find
     var item = items.find(x => x.product?.id === productId);
