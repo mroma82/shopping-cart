@@ -9,7 +9,9 @@
             <div class="card-body">
                 <h5 class="card-title">{{ product.description }}</h5>
                 <p class="card-text">{{ product.teaserText}}</p>
-                <a routerLink="/product/{{ product.id }}" class="btn btn-primary">Check it out</a>
+                <a routerLink="/product/{{ product.id }}" class="btn btn-primary">View</a>
+                <a (click)="addToCart(product)" class="btn btn-primary ms-2">Add to Cart</a>
+
             </div>
         </div>
     </div>
