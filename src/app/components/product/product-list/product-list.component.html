@@ -1,0 +1,14 @@
+<h2 *ngIf="title">{{ title }}</h2>
+
+<div class="row" *ngIf="products">
+    <div class="col-md-3" *ngFor="let product of products">
+        <div class="card">
+            <img [src]="product.imageUrl" class="card-img-top" [alt]="product.description">
+            <div class="card-body">
+                <h5 class="card-title">{{ product.description }}</h5>
+                <p class="card-text">{{ product.teaserText}}</p>
+                <a routerLink="/product/{{ product.id }}" class="btn btn-primary">Check it out</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -49,12 +49,51 @@ const categories: CategoryModel[] = [
 
 // mock products
 const products: ProductModel[] = [
-  { id: "d2a36ca3-ab5d-4ac9-a37d-3c4ed63c9506", description: "Polo shirt", category: categories[0].id },
-  { id: "2c02dc7f-90f3-496b-a110-9e70b58a5311", description: "Tee-shirt", category: categories[0].id, featured: true, featuredSort: 2 },
-  { id: "afb3ffbc-6395-4f22-89b7-b9b18ee955bc", description: "Sweatpants", category: categories[1].id },
-  { id: "976677bd-507e-4e26-9e58-8710653694fc", description: "Dress pants", category: categories[1].id, featured: true, featuredSort: 1 },
-  { id: "b4d27828-6324-429c-b957-d81973d1b211", description: "Shorts", category: categories[2].id },
-  { id: "b0d7414c-6d4c-4959-83ff-9510c4a6cc5f", description: "Coffee Cup", category: categories[2].id, featured: true, featuredSort: 3 }
+  {
+    id: "d2a36ca3-ab5d-4ac9-a37d-3c4ed63c9506",
+    description: "Polo shirt",
+    category: categories[0].id,
+    imageUrl: "https://picsum.photos/id/237/300/200"
+  },
+  {
+    id: "2c02dc7f-90f3-496b-a110-9e70b58a5311",
+    description: "Tee-shirt",
+    category: categories[0].id,
+    featured: true,
+    featuredSort: 2,
+    imageUrl: "https://picsum.photos/id/100/300/200",
+    teaserText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent non fermentum turpis."
+  },
+  {
+    id: "afb3ffbc-6395-4f22-89b7-b9b18ee955bc",
+    description: "Sweatpants",
+    category: categories[1].id,
+    imageUrl: "https://picsum.photos/id/200/300/200",
+    teaserText: "Sed ac nunc nec purus imperdiet volutpat."
+  },
+  {
+    id: "976677bd-507e-4e26-9e58-8710653694fc",
+    description: "Dress pants",
+    category: categories[1].id,
+    featured: true,
+    featuredSort: 1,
+    imageUrl: "https://picsum.photos/id/300/300/200",
+    teaserText: "Sed est est, fringilla a nunc nec, congue blandit nibh."
+  },
+  {
+    id: "b4d27828-6324-429c-b957-d81973d1b211",
+    description: "Shorts",
+    category: categories[2].id,
+    imageUrl: "https://picsum.photos/id/400/300/200"
+  },
+  {
+    id: "b0d7414c-6d4c-4959-83ff-9510c4a6cc5f",
+    description: "Coffee Cup",
+    category: categories[2].id,
+    featured: true,
+    featuredSort: 3,
+    imageUrl: "https://picsum.photos/id/500/300/200"
+  }
 ]
 
 // mock user

@@ -9,6 +9,7 @@ import { CatalogPageComponent } from './pages/catalog-page/catalog-page.componen
 import { ProductPageComponent } from './pages/product-page/product-page.component';
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
 import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.component';
+import { ProductListComponent } from './components/product/product-list/product-list.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.compo
     CatalogPageComponent,
     ProductPageComponent,
     CartPageComponent,
-    CheckoutPageComponent
+    CheckoutPageComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,

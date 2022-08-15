@@ -1,4 +1,8 @@
-<p>home-page works!</p>
+<h1>Home</h1>
+<p>
+    Check out our featured products
+</p>
 
-<div *ngFor="let product of products$ | async">product: {{ product.description }}</div>
-<h4>end</h4>
+<div *ngIf="products$ | async as products">
+    <app-product-list title="Featured Products" [products]="products"></app-product-list>
+</div>
