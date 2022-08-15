@@ -3,7 +3,9 @@
 <div class="row" *ngIf="products">
     <div class="col-md-3" *ngFor="let product of products">
         <div class="card">
-            <img [src]="product.imageUrl" class="card-img-top" [alt]="product.description">
+            <a routerLink="/product/{{ product.id }}">
+                <img [src]="product.imageUrl" class="card-img-top" [alt]="product.description">
+            </a>
             <div class="card-body">
                 <h5 class="card-title">{{ product.description }}</h5>
                 <p class="card-text">{{ product.teaserText}}</p>
