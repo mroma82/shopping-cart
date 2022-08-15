@@ -75,7 +75,12 @@ export class CartContextService {
       this.removeFromCart(cartItem?.product?.id);
     }
 
+    // update the quantity
+    cartItem.qty += qty;
 
+    // get the list to push
+    var items = this._cartStore.value;
+    this._cartStore.next(items);
   }
 
 

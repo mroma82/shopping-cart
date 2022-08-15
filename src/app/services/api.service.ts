@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { CategoryModel } from '../models/category-model';
 import { ProductModel } from '../models/product-model';
 import { UserModel } from '../models/user-model';
@@ -15,14 +15,21 @@ export class ApiService {
   getProducts = () => of(products);
 
   // products by category
-  getProductByCategory(categoryId: string) {
+  getProductByCategory(categoryId: string): Observable<ProductModel[]> {
 
     // filter the list
     return of(products.filter(x => x.category === categoryId));
   }
 
+  // featured products
+  getProductsFeatured(): Observable<ProductModel[]> {
+
+    // filter by featured and sort
+    return of(products.filter(x => x.featured === true).sort((l, r) => (l.featuredSort ?? 999) - (r.featuredSort ?? 999)));
+  }
+
   // single product
-  getSingleProduct(id: string) {
+  getSingleProduct(id: string): Observable<ProductModel | undefined> {
 
     // find the product
     return of(products.find(x => x.id === id));
