@@ -1,1 +1,5 @@
-<p>catalog-page works!</p>
+<h1>Product Catalog</h1>
+
+<div *ngIf="products$ | async as products">
+    <app-product-list [products]="products"></app-product-list>
+</div>
