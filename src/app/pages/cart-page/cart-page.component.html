@@ -1,1 +1,45 @@
-<p>cart-page works!</p>
+<h1>Cart</h1>
+
+<div>
+    <div class="row justify-content-end">
+        <div class="col-3 text-end">
+            <strong>Price</strong>
+        </div>
+    </div>
+
+    <div class="row mb-3" *ngFor="let item of cart$ | async">
+        <div class="col-3">
+            <img class="img-fluid" [src]="item.product?.imageUrl" [alt]="item.product?.description" />
+        </div>
+        <div class="col-6">
+            <h4>{{ item.product?.description }}</h4>
+            <p>
+                {{ item.product?.teaserText }}
+            </p>
+            <p>
+                <input type="number" class="form-control form-control-sm d-inline" style="max-width: 50px" #qty [value]="item.qty">
+                <button (click)="updateCartItemQuantity(item, qty.valueAsNumber)" class="btn btn-sm btn-primary ms-3">Update Quantity</button>
+                <button (click)="removeFromCart(item.product?.id)" class="btn btn-sm btn-link">Remove from Cart</button>
+            </p>
+            <p>
+
+            </p>
+        </div>
+        <div class="col-3 text-end">
+            ${{ item.product?.price | number:'1.1-2'}}
+        </div>
+    </div>
+    <hr>
+
+    <div class="row justify-content-end mb-4">
+        <div class="col-3 text-end">
+            <strong>Sub total</strong>
+            <p>
+                ${{ cartTotal$ | async | number:'1.1-2'}}
+            </p>
+            <p>
+                <button routerLink="/checkout" class="btn btn-primary btn-lg">Checkout</button>
+            </p>
+        </div>
+    </div>
+</div>

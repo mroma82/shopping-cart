@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, of } from 'rxjs';
+import { BehaviorSubject, map, of } from 'rxjs';
 import { CartItemModel } from '../../models/cart-item-model';
 import { ProductModel } from '../../models/product-model';
-import { ApiService } from '../api.service';
+import { ApiService, PRODUCTS } from '../api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,13 +14,18 @@ export class CartContextService {
   private _cartStore$ = new BehaviorSubject<CartItemModel[]>([]);
   public cart$ = this._cartStore$.asObservable();
 
-  // todo: cart total
-  cartTotal$ = of(100);
+  // cart total
+  cartTotal$ = this._cartStore$.pipe(map(arr => arr.reduce((sum, i) => sum += i.qty * (i.product?.price ?? 0), 0)));
 
   // new
   constructor(
     private api: ApiService
-  ) { }
+  ) {
+    // hack
+    this.addToCart(PRODUCTS[0], 1);
+    this.addToCart(PRODUCTS[1], 2);
+    this.addToCart(PRODUCTS[2], 1);
+  }
 
   // add to cart
   addToCart(product: ProductModel, qty: number) {
@@ -76,7 +81,7 @@ export class CartContextService {
     }
 
     // update the quantity
-    cartItem.qty += qty;
+    cartItem.qty = qty;
 
     // get the list to push
     var items = this._cartStore$.value;
