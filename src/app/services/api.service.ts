@@ -55,7 +55,8 @@ const products: ProductModel[] = [
     category: categories[0].id,
     imageUrl: "https://picsum.photos/id/237/300/200",
     teaserText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    price: 24.99
+    price: 24.99,
+    contentHtml: "<p>This is content for the Polo shirt.</p>"
   },
   {
     id: "2c02dc7f-90f3-496b-a110-9e70b58a5311",

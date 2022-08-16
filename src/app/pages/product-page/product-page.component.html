@@ -1,1 +1,13 @@
-<p>product-page works!</p>
+<div *ngIf="product$ | async as product" class="row">
+
+    <div class="col-10 col-sm-12">
+        <img [src]="product?.imageUrl" [alt]="product.description" class="rounded float-end" />
+        <h1>{{ product.description }}</h1>
+
+        <div *ngIf="product?.contentHtml" [innerHTML]="product?.contentHtml"></div>
+
+        <p>
+            <button (click)="addToCart(product)" class="btn btn-primary btn-lg">Add to Cart</button>
+        </p>
+    </div>
+</div>
