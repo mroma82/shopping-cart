@@ -21,10 +21,6 @@ export class CartContextService {
   constructor(
     private api: ApiService
   ) {
-    // hack
-    this.addToCart(PRODUCTS[0], 1);
-    this.addToCart(PRODUCTS[1], 2);
-    this.addToCart(PRODUCTS[2], 1);
   }
 
   // add to cart

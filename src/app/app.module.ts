@@ -11,6 +11,7 @@ import { CartPageComponent } from './pages/cart-page/cart-page.component';
 import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.component';
 import { ProductListComponent } from './components/product/product-list/product-list.component';
 import { FormsModule } from '@angular/forms';
+import { TopNavComponent } from './components/shared/top-nav/top-nav.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FormsModule } from '@angular/forms';
     ProductPageComponent,
     CartPageComponent,
     CheckoutPageComponent,
-    ProductListComponent
+    ProductListComponent,
+    TopNavComponent
   ],
   imports: [
     BrowserModule,
