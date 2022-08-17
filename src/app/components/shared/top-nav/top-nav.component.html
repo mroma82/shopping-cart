@@ -14,7 +14,9 @@
                     <a class="nav-link" routerLink="/catalog">Catalog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/cart">Cart</a>
+                    <a class="nav-link" routerLink="/cart">
+                        Cart<span *ngIf="cartSize$ | async as cartSize"> ({{cartSize}} item{{cartSize !== 1 ? 's' : ''}})</span>
+                    </a>
                 </li>
             </ul>
 
