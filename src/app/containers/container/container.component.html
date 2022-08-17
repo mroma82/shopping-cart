@@ -1,5 +1,13 @@
-<app-top-nav></app-top-nav>
-<app-message-toast></app-message-toast>
-<div class="container">
-    <router-outlet></router-outlet>
+<div *ngIf="ready$ | async as ready">
+
+    <div *ngIf="ready">
+        <app-top-nav></app-top-nav>
+        <app-message-toast></app-message-toast>
+        <div class="container">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+    <div *ngIf="!ready" class="p-4 text-center">
+        Please wait while loading...
+    </div>
 </div>

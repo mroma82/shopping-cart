@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { AppContextService } from '../../services/context/app-context.service';
 import { AuthContextService } from '../../services/context/auth-context.service';
 
 @Component({
@@ -8,9 +10,13 @@ import { AuthContextService } from '../../services/context/auth-context.service'
 })
 export class ContainerComponent implements OnInit {
 
+  // state
+  ready$: Observable<boolean> = this.appContext.ready$;
+
   // new
   constructor(
-    private authContext: AuthContextService
+    private authContext: AuthContextService,
+    private appContext: AppContextService
   ) { }
 
   // init
