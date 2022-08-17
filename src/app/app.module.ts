@@ -12,6 +12,7 @@ import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.compo
 import { ProductListComponent } from './components/product/product-list/product-list.component';
 import { FormsModule } from '@angular/forms';
 import { TopNavComponent } from './components/shared/top-nav/top-nav.component';
+import { MessageToastComponent } from './components/shared/message-toast/message-toast.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { TopNavComponent } from './components/shared/top-nav/top-nav.component';
     CartPageComponent,
     CheckoutPageComponent,
     ProductListComponent,
-    TopNavComponent
+    TopNavComponent,
+    MessageToastComponent
   ],
   imports: [
     BrowserModule,

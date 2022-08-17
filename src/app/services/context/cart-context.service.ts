@@ -3,6 +3,7 @@ import { BehaviorSubject, map, of } from 'rxjs';
 import { CartItemModel } from '../../models/cart-item-model';
 import { ProductModel } from '../../models/product-model';
 import { ApiService, PRODUCTS } from '../api.service';
+import { MessageContextService } from './message-context.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,8 @@ export class CartContextService {
 
   // new
   constructor(
-    private api: ApiService
+    private api: ApiService,
+    private messageContext: MessageContextService
   ) {
   }
 
@@ -38,6 +40,9 @@ export class CartContextService {
     var existingItem = this.findCartItemByProductId(product.id ?? "");
     if (existingItem) {
       existingItem.qty += qty;
+
+      // message
+      this.messageContext.success("Updated your cart");
     }
 
     // else add
@@ -46,6 +51,9 @@ export class CartContextService {
         product: product,
         qty: qty
       });
+
+      // message
+      this.messageContext.success("Added to your cart");
     }
 
     // send
@@ -63,6 +71,9 @@ export class CartContextService {
     if (existingItemIndex > -1) {
       items.splice(existingItemIndex, 1);
 
+      // message
+      this.messageContext.success("Removed item from your cart");
+
       // send
       this._cartStore$.next(items);
     }
@@ -79,10 +90,14 @@ export class CartContextService {
     // if zero, then remove
     if (qty == 0) {
       this.removeFromCart(cartItem?.product?.id);
+      return;
     }
 
     // update the quantity
     cartItem.qty = qty;
+
+    // message
+    this.messageContext.success("Updated your cart");
 
     // get the list to push
     var items = this._cartStore$.value;
