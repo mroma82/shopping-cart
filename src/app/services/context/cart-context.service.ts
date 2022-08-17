@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, of } from 'rxjs';
 import { CartItemModel } from '../../models/cart-item-model';
 import { ProductModel } from '../../models/product-model';
-import { ApiService, PRODUCTS } from '../api.service';
+import { ApiService } from '../api.service';
 import { MessageContextService } from './message-context.service';
 
 @Injectable({

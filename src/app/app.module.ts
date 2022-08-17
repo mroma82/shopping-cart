@@ -13,6 +13,8 @@ import { ProductListComponent } from './components/product/product-list/product-
 import { FormsModule } from '@angular/forms';
 import { TopNavComponent } from './components/shared/top-nav/top-nav.component';
 import { MessageToastComponent } from './components/shared/message-toast/message-toast.component';
+import { ApiService } from './services/api.service';
+import { MockApiService } from './services/api-mock.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,7 @@ import { MessageToastComponent } from './components/shared/message-toast/message
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [{ provide: ApiService, useExisting: MockApiService }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

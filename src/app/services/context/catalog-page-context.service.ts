@@ -10,6 +10,8 @@ export class CatalogPageContextService {
   private _productsStore$ = new BehaviorSubject<ProductModel[]>([]);
   public products$ = this._productsStore$.asObservable();
 
+
+
   // new
   constructor(
     private api: ApiService
