@@ -8,7 +8,7 @@ export class ProductPageContextService {
 
   // state
   private _productStore$ = new BehaviorSubject<ProductModel | undefined>(undefined);
-  product$ = this._productStore$.asObservable();
+  public product$ = this._productStore$.asObservable();
 
   // new
   constructor(

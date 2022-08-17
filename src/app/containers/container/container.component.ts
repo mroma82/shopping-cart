@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthContextService } from '../../services/context/auth-context.service';
 
 @Component({
   selector: 'app-container',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContainerComponent implements OnInit {
 
-  constructor() { }
+  // new
+  constructor(
+    private authContext: AuthContextService
+  ) { }
 
+  // init
   ngOnInit(): void {
+
+    // init auth
+    this.authContext.init();
   }
 
 }

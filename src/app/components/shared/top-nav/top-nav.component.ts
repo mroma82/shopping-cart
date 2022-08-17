@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { UserModel } from '../../../models/user-model';
+import { AuthContextService } from '../../../services/context/auth-context.service';
 
 @Component({
   selector: 'app-top-nav',
@@ -7,7 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopNavComponent implements OnInit {
 
-  constructor() { }
+  // state
+  user$: Observable<UserModel | undefined> = this.authContext.user$
+
+  // new
+  constructor(
+    private authContext: AuthContextService
+  ) { }
 
   ngOnInit(): void {
   }

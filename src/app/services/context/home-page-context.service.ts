@@ -8,7 +8,7 @@ export class HomePageContextService {
 
   // state
   private _productsStore$ = new BehaviorSubject<ProductModel[]>([]);
-  products$ = this._productsStore$.asObservable();
+  public products$ = this._productsStore$.asObservable();
 
   // new
   constructor(

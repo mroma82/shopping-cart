@@ -11,7 +11,8 @@ const MESSAGE_EXPIRATION_MS = 3000;
 export class MessageContextService {
 
   // state
-  messages$ = new BehaviorSubject<MessageModel[]>([]);
+  private _messagesStore$ = new BehaviorSubject<MessageModel[]>([]);
+  public messages$ = this._messagesStore$.asObservable();
 
   // new
   constructor() { }
@@ -40,7 +41,7 @@ export class MessageContextService {
   private add(message: MessageModel) {
 
     // get the list
-    let list = this.messages$.value;
+    let list = this._messagesStore$.value;
 
     // add to the list
     list.push(message);
@@ -52,16 +53,16 @@ export class MessageContextService {
     }, MESSAGE_EXPIRATION_MS);
 
     // next
-    this.messages$.next(list);
+    this._messagesStore$.next(list);
   }
 
   // access expirations
   accessExpirations() {
 
     // get the list
-    let list = this.messages$.value;
+    let list = this._messagesStore$.value;
 
     // next
-    this.messages$.next(list.filter(x => !x.expired));
+    this._messagesStore$.next(list.filter(x => !x.expired));
   }
 }
