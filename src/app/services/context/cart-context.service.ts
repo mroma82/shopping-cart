@@ -15,12 +15,17 @@ export class CartContextService {
   public cart$ = this._cartStore$.asObservable();
 
   // cart total
-  cartTotal$ = this._cartStore$.pipe(map(arr => arr.reduce((sum, i) => sum += i.qty * (i.product?.price ?? 0), 0)));
+  cartTotal$ = this._cartStore$.pipe(map(arr => this.calculateCartTotal(arr)));
 
   // new
   constructor(
     private api: ApiService
   ) {
+  }
+
+  // function that calculates the cart total
+  calculateCartTotal(cart: CartItemModel[]) {
+    return cart.reduce((sum, i) => sum += i.qty * (i.product?.price ?? 0), 0)
   }
 
   // add to cart
