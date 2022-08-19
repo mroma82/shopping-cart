@@ -16,6 +16,8 @@ import { MessageToastComponent } from './components/shared/message-toast/message
 import { ApiService } from './services/api.service';
 import { MockApiService } from './services/api-mock.service';
 import { ProductListFilterComponent } from './components/product/product-list-filter/product-list-filter.component';
+import { HttpApiService } from './services/api-http.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -34,9 +36,10 @@ import { ProductListFilterComponent } from './components/product/product-list-fi
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [{ provide: ApiService, useExisting: MockApiService }],
+  providers: [{ provide: ApiService, useExisting: HttpApiService }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
