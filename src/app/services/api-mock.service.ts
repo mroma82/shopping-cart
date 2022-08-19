@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { filter, Observable, of } from 'rxjs';
 import { CategoryModel } from '../models/category-model';
+import { ProductListFilterModel } from '../models/product-list-filter-model';
 import { ProductModel } from '../models/product-model';
 import { UserModel } from '../models/user-model';
 import { ApiService } from './api.service';
@@ -15,11 +16,19 @@ export class MockApiService implements ApiService {
   // product list
   getProducts = () => of(products);
 
-  // products by category
-  getProductByCategory(categoryId: string): Observable<ProductModel[]> {
+  // products filtered
+  getProductsFiltered(filterModel: ProductListFilterModel): Observable<ProductModel[]> {
+
+    // init the list
+    var filtered = products;
+
+    // check if category filter
+    if (filterModel.categoryId && filterModel.categoryId !== "*") {
+      filtered = filtered.filter(x => x.category == filterModel.categoryId);
+    }
 
     // filter the list
-    return of(products.filter(x => x.category === categoryId));
+    return of(filtered);
   }
 
   // featured products
@@ -36,6 +45,10 @@ export class MockApiService implements ApiService {
     return of(products.find(x => x.id === id));
   }
 
+  // get categories
+  getProductCategories(): Observable<CategoryModel[]> {
+    return of(categories);
+  }
 
   // get the current user
   getCurrentUser = () => of(currentUser);

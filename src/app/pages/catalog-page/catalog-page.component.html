@@ -1,5 +1,9 @@
 <h1>Product Catalog</h1>
 
+<div class="mb-3">
+    <app-product-list-filter></app-product-list-filter>
+</div>
+
 <div *ngIf="products$ | async as products">
     <app-product-list [products]="products"></app-product-list>
 </div>

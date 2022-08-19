@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
     <div class="container">
         <a class="navbar-brand" routerLink="/">Shopping Cart</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,7 +20,7 @@
                 </li>
             </ul>
 
-            <span class="navbar-text" *ngIf="user$ | async as user">
+            <span class="navbar-text text-light" *ngIf="user$ | async as user">
                 Welcome {{ user.name }}
             </span>
         </div>

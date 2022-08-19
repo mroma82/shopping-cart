@@ -1,5 +1,5 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { BehaviorSubject, combineLatest, filter, forkJoin, Observable, observable, Subject, Subscription } from 'rxjs';
+import { BehaviorSubject, combineLatest, delay, filter, forkJoin, Observable, observable, of, Subject, Subscription } from 'rxjs';
 import { AuthContextService } from './auth-context.service';
 
 @Injectable({
@@ -20,8 +20,10 @@ export class AppContextService implements OnDestroy {
   ) {
 
     // ready states for all 
-    var sub = combineLatest([authContext.user$])
-      .pipe(filter((user) => user !== undefined))
+    var sub = combineLatest([
+      authContext.user$,
+      of(1).pipe(delay(1000)) // simulate load delay
+    ]).pipe(filter((user, d) => user !== undefined))
       .subscribe(() => this._readyStore$.next(true));
     this.subs.add(sub);
   }

@@ -15,6 +15,7 @@ import { TopNavComponent } from './components/shared/top-nav/top-nav.component';
 import { MessageToastComponent } from './components/shared/message-toast/message-toast.component';
 import { ApiService } from './services/api.service';
 import { MockApiService } from './services/api-mock.service';
+import { ProductListFilterComponent } from './components/product/product-list-filter/product-list-filter.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MockApiService } from './services/api-mock.service';
     CheckoutPageComponent,
     ProductListComponent,
     TopNavComponent,
-    MessageToastComponent
+    MessageToastComponent,
+    ProductListFilterComponent
   ],
   imports: [
     BrowserModule,
